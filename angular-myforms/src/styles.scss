@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+}
+.jumbotron {
+  //position: fixed;
+  margin-bottom:0;
+  width: 100%;
+  top: 51px;
+  z-index: 2
+}
+ .container {
+  position: relative;
+  top: 246px;
+  z-index: 1;
+}

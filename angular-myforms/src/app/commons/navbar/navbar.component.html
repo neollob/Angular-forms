@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navigate to:</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink='/home' >Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"  id="dropdown_storing" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Forms</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown_storing">
+          <a class="dropdown-item" routerLink="/forms/f01">Form 1</a>
+          <a class="dropdown-item" routerLink="/forms/f02">Form 2</a>
+        </div>
+      </li>
+      <li class="nav-item" *ngIf="logged!='true'">
+        <a class="nav-link" routerLink='/login' >LogIn <span class="sr-only">(current)</span></a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
