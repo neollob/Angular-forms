@@ -1,13 +1,13 @@
 # Angular Forms
 
-###Creem Angular App
+### Angular App
 
 `ng new myapp -p amf --routing true` 
 
 Un cop creada canviem al seu directori per crear els elements necessaris.
 a `package.json` canviar el script `"start":"ng serve ---aot -o"` 
 
-###Creem els moduls
+### Moduls
 
 ```
 ng g m commons --routing false
@@ -33,12 +33,12 @@ Per altre banda seràn cridats des d'altres moduls (`home`, `notFound`) per tant
    ...
  })
 ```
-###Creem els components
+### Components
 ```
 ng g c commons/header --export
 ```
 
-###Rutes
+### Rutes
 Si es tracta d'erutament directe l'has de declarar al `app-routing.module.ts` (o modul principal de l'app)
 ```ts
 const routes: Routes = [
@@ -83,7 +83,7 @@ const routes: Routes = [
 ];
 ```
 
-##Caracteristiques propies d'Angular
+## Caracteristiques propies d'Angular
 
 ### Identificadors d'elements
 
@@ -103,7 +103,7 @@ a la vista `form01.component.html` ho representarem entre corxets `[]` que indic
 <input type='password' class='form-control' #usernamePass [placeholder]='placeholders.userpass'>
 ```
 
-### Creem les classes
+### Classes
 
 `ng g class shared/classes/User`
 
@@ -162,7 +162,7 @@ export class User {
 }
 ```
 
-###ng-Model
+### ngModel
 En cualquier módulo en el que uno de sus componentes vaya a emplear `ngModel` debemos importar el módulo `FormsModule` de `@angular/forms`
 
 ```ts
