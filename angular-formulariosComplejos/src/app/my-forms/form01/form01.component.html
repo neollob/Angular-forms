@@ -1,0 +1,103 @@
+<div class="container">
+  <h1> Tercer formulario</h1>
+  <form (change)="checkButton()">
+    <div class="form-group">
+      <label for="realName">Nombre real:</label>
+      <input type="text" class="form-control" id="realName" name="realName" #realNameField="ngModel" required
+        minlength="4" maxlength="10" [placeholder]="placeholders.realname" [(ngModel)]="userData.realname">
+
+    </div>
+    <div class="form-group">
+      <label for="userName">Nombre de Usuario:</label>
+      <input type="text" class="form-control" id="userName" name="userName" #userNameField="ngModel" required
+        minlength="4" maxlength="10" [placeholder]="placeholders.username" [(ngModel)]="userData.username">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" name="password" #passwordField="ngModel" required
+        minlength="4" maxlength="10" [placeholder]="placeholders.userpass" [(ngModel)]="userData.password">
+    </div>
+
+    <div class="form-group">
+      <label for="confirmUserPass">Confirm Password:</label>
+      <input type="password" (focusout)="checkPassword()" class="form-control" id="confirmUserPass"
+        name="confirmUserPass" #confirmUserPassField [placeholder]="placeholders.userconfimrpass"
+        [(ngModel)]="userData.confirmPassword">
+    </div>
+    <div class="form-group">
+      <label for="userEmail">Email:</label>
+      <input type="email" class="form-control" id="userEmail" name="userEmail" #userEmailField="ngModel"
+        [placeholder]="placeholders.email" [(ngModel)]="userData.email" email>
+    </div>
+    <div class="form-group">
+      <label>Continente:</label>
+      <select class="form-control" name="userContinent" [(ngModel)]="userData.continent">
+        <option *ngFor="let continent of continents" [value]="continent.value" [selected]="continent.selected"
+          [disabled]="continent.disabled">{{continent.text}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>language:</label>
+      <select class="form-control" name="userLanguage" [(ngModel)]="userData.languages" multiple>
+        <option *ngFor="let l of lang" [value]="l.ISO639_1" [selected]="false"
+          [disabled]="false">{{l.language}}</option>
+      </select>
+    </div>
+
+
+
+
+    <div class="form-group">
+      <label>
+        <input type="radio" class="form-control" #{{genders.H.id}} [value]="genders.H.value" [name]="genders.H.name"
+          [checked]="genders.H.checked" [(ngModel)]="userData.gender">{{genders.H.label}}
+      </label>
+      <label>
+        <input type="radio" class="form-control" #{{genders.M.id}} [value]="genders.M.value" [name]="genders.M.name"
+          [checked]="genders.M.checked" [(ngModel)]="userData.gender">{{genders.M.label}}
+      </label>
+      <div class="form-group">
+        <label>Mayor de edad:
+          <input type="checkbox" name="user18" #upto18 value="true" [(ngModel)]="userData.upTo18">
+        </label>
+      </div>
+      <input type="button" (click)="saveUser()" class="btn btn-dark" #sendbutton value="Aceptar"
+        [disabled]="botonDesactivado">
+    </div>
+
+
+  </form>
+  <div class="alert alert-danger" *ngIf="mensajeDeError || (userNameField.invalid && userNameField.touched)
+    || (userEmailField.value !== '' && userEmailField.invalid && userEmailField.touched && userEmailField.dirty)
+    || (passwordField.value !== '' && passwordField.invalid && passwordField.touched)
+    || (errorLanguages)">
+    <div *ngIf="userNameField.invalid  && userNameField.touched">
+      <h3>Error en el nombre de usuario</h3>
+      <span *ngIf="userNameField.errors.required">
+        <p>Este campo es obligatorio</p>
+      </span>
+      <span *ngIf="userNameField.errors.minlength">
+        <p>Debes teclear 4 caracteres o más</p>
+      </span>
+    </div>
+    <div *ngIf="passwordField.value !== '' && passwordField.invalid && passwordField.touched">
+      <h3>Error en contraseña</h3>
+      <p>La contraseña es demasiado corta</p>
+    </div>
+    <div *ngIf="userEmailField.value !== '' && userEmailField.errors?.email && userEmailField.touched">
+      <h3>Error en mail</h3>
+      <p>EL mail no es correcto</p>
+    </div>
+    <div *ngIf="errorPass">
+      <h3>Error en confirmación de contraseña</h3>
+      <p>La confirmación no coincide con la contraseña</p>
+    </div>
+     <div *ngIf="errorLanguages">
+        <h3>Idiomas insuficientes</h3>
+        <p>Debes hablar, al menos, tres idiomas de la lista.</p>
+      </div>
+      </div>
+
+  <!----->
+  {{ user | json}}<br>
+</div>

@@ -1,0 +1,13 @@
+<app-member-form [modifyUser]="usuarioEditado" [errorDetected]="usuarioErroneo" [recordSaved]="usuarioCorrecto" (enviarUsuario)="recibir($event)">
+</app-member-form>
+
+<div class="row" *ngIf="user != undefined">
+  <ul>
+    <li><strong>Id:</strong>{{user.id}}</li>
+    <li><strong>DNI:</strong>{{user.dni}}</li>
+    <li><strong>Nombre:</strong>{{user.nombre}}</li>
+  </ul>
+</div>
+
+<app-member-list [usersArray]="usersArray" [registeredUsers]="registeredUsers" (eraseUser)="erase($event)" (modifyUser)="edit($event)"
+  ></app-member-list>

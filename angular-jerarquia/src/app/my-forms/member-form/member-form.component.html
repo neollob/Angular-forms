@@ -1,0 +1,47 @@
+<ng-container>
+
+  <h3>Comunicación entre componentes</h3>
+  <form  class="col-sm-12">
+    <div class="row">
+      <h3>Registro de socios</h3>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <label class="ajustado">DNI de socio
+          <input type="text" class="form-control" name="DNIModel" [(ngModel)]="modifyUser.dni" (keyup)="clearNotice()">
+        </label>
+      </div>
+      <div class="col-sm-6">
+        <label class="ajustado">Nombre
+          <input type="text" class="form-control" name="NombreModel" [(ngModel)]="modifyUser.nombre"
+            (keyup)="clearNotice()">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <br>
+    </div>
+    <div class="row">
+      <div class="col-sm-12" *ngIf="modifyUser.id==''">
+        <input type="button" class="btn btn-primary" value="Grabar" (click)="saveRecord()">
+      </div>
+      <div class="col-sm-12" *ngIf="modifyUser.id!=''">
+        <input type="button" class="btn btn-info" value="Nuevo" (click)="newRecord()">
+      </div>
+    </div>
+    <div class="row">
+      <br>
+    </div>
+    <div class="row" *ngIf="errorDetected">
+      <div class="col-sm-12 alert alert-danger">
+        <h4>Faltan datos</h4>
+        <p>Ambos campos son obligatorios</p>
+      </div>
+    </div>
+    <div class="row" *ngIf="recordSaved">
+      <div class="col-sm-12 alert alert-success">
+        <h4>Registro grabado</h4>
+      </div>
+    </div>
+  </form>
+</ng-container>
