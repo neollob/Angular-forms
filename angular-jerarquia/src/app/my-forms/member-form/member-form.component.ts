@@ -15,7 +15,7 @@ export class MemberFormComponent implements OnInit {
   @Output() enviarUsuario = new EventEmitter<User>();
 
   constructor() {
-    this.modifyUser = new User('', '');
+    this.newRecord();
     // this.dni = this.modifyUser.dni;
     // this.nombre = this.modifyUser.nombre;
     this.errorDetected = false;
